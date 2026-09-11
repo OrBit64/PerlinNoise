@@ -529,3 +529,239 @@ events:
       
       
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "build/_deps/raylib-src/cmake/AddIfFlagCompiles.cmake:3 (CHECK_C_COMPILER_FLAG)"
+      - "build/_deps/raylib-src/cmake/CompilerFlags.cmake:5 (add_if_flag_compiles)"
+      - "build/_deps/raylib-src/CMakeLists.txt:29 (include)"
+    checks:
+      - "Performing Test COMPILER_HAS_THOSE_TOGGLES"
+    directories:
+      source: "/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-yaBjcO"
+      binary: "/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-yaBjcO"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/orbit/fun/CoolProjects/PerlinNoise/build/_deps/raylib-src/cmake"
+    buildResult:
+      variable: "COMPILER_HAS_THOSE_TOGGLES"
+      cached: true
+      stdout: |
+        Change Dir: '/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-yaBjcO'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_01b2c/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_01b2c.dir/build.make CMakeFiles/cmTC_01b2c.dir/build
+        gmake[1]: Entering directory '/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-yaBjcO'
+        Building C object CMakeFiles/cmTC_01b2c.dir/src.c.o
+        /usr/bin/gcc -DCOMPILER_HAS_THOSE_TOGGLES  -Werror=pointer-arith -o CMakeFiles/cmTC_01b2c.dir/src.c.o -c /home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-yaBjcO/src.c
+        Linking C executable cmTC_01b2c
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_01b2c.dir/link.txt --verbose=1
+        /usr/bin/gcc -rdynamic CMakeFiles/cmTC_01b2c.dir/src.c.o -o cmTC_01b2c 
+        gmake[1]: Leaving directory '/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-yaBjcO'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "/usr/share/cmake-3.28/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "build/_deps/raylib-src/src/external/glfw/CMakeLists.txt:64 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-pbXjXQ"
+      binary: "/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-pbXjXQ"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith "
+      CMAKE_MODULE_PATH: "/home/orbit/fun/CoolProjects/PerlinNoise/build/_deps/raylib-src/cmake;/home/orbit/fun/CoolProjects/PerlinNoise/build/_deps/raylib-src/src/external/glfw/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: '/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-pbXjXQ'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_7cb6e/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_7cb6e.dir/build.make CMakeFiles/cmTC_7cb6e.dir/build
+        gmake[1]: Entering directory '/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-pbXjXQ'
+        Building C object CMakeFiles/cmTC_7cb6e.dir/src.c.o
+        /usr/bin/gcc -DCMAKE_HAVE_LIBC_PTHREAD  -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith   -o CMakeFiles/cmTC_7cb6e.dir/src.c.o -c /home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-pbXjXQ/src.c
+        Linking C executable cmTC_7cb6e
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7cb6e.dir/link.txt --verbose=1
+        /usr/bin/gcc -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith   -rdynamic CMakeFiles/cmTC_7cb6e.dir/src.c.o -o cmTC_7cb6e 
+        gmake[1]: Leaving directory '/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-pbXjXQ'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CheckLibraryExists.cmake:69 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindX11.cmake:682 (check_library_exists)"
+      - "build/_deps/raylib-src/src/external/glfw/src/CMakeLists.txt:187 (find_package)"
+    checks:
+      - "Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so"
+    directories:
+      source: "/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-dt9qMz"
+      binary: "/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-dt9qMz"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/orbit/fun/CoolProjects/PerlinNoise/build/_deps/raylib-src/cmake;/home/orbit/fun/CoolProjects/PerlinNoise/build/_deps/raylib-src/src/external/glfw/CMake/modules"
+    buildResult:
+      variable: "X11_LIB_X11_SOLO"
+      cached: true
+      stdout: |
+        Change Dir: '/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-dt9qMz'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_44cf9/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_44cf9.dir/build.make CMakeFiles/cmTC_44cf9.dir/build
+        gmake[1]: Entering directory '/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-dt9qMz'
+        Building C object CMakeFiles/cmTC_44cf9.dir/CheckFunctionExists.c.o
+        /usr/bin/gcc   -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DCHECK_FUNCTION_EXISTS=XOpenDisplay -std=gnu99 -o CMakeFiles/cmTC_44cf9.dir/CheckFunctionExists.c.o -c /home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-dt9qMz/CheckFunctionExists.c
+        Linking C executable cmTC_44cf9
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_44cf9.dir/link.txt --verbose=1
+        /usr/bin/gcc -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DCHECK_FUNCTION_EXISTS=XOpenDisplay CMakeFiles/cmTC_44cf9.dir/CheckFunctionExists.c.o -o cmTC_44cf9  /usr/lib/x86_64-linux-gnu/libX11.so /usr/lib/x86_64-linux-gnu/libXext.so 
+        gmake[1]: Leaving directory '/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-dt9qMz'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CheckFunctionExists.cmake:86 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindX11.cmake:697 (check_function_exists)"
+      - "build/_deps/raylib-src/src/external/glfw/src/CMakeLists.txt:187 (find_package)"
+    checks:
+      - "Looking for gethostbyname"
+    directories:
+      source: "/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-kk32rP"
+      binary: "/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-kk32rP"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/orbit/fun/CoolProjects/PerlinNoise/build/_deps/raylib-src/cmake;/home/orbit/fun/CoolProjects/PerlinNoise/build/_deps/raylib-src/src/external/glfw/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_GETHOSTBYNAME"
+      cached: true
+      stdout: |
+        Change Dir: '/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-kk32rP'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_540ad/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_540ad.dir/build.make CMakeFiles/cmTC_540ad.dir/build
+        gmake[1]: Entering directory '/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-kk32rP'
+        Building C object CMakeFiles/cmTC_540ad.dir/CheckFunctionExists.c.o
+        /usr/bin/gcc   -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DCHECK_FUNCTION_EXISTS=gethostbyname -std=gnu99 -o CMakeFiles/cmTC_540ad.dir/CheckFunctionExists.c.o -c /home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-kk32rP/CheckFunctionExists.c
+        Linking C executable cmTC_540ad
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_540ad.dir/link.txt --verbose=1
+        /usr/bin/gcc -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DCHECK_FUNCTION_EXISTS=gethostbyname CMakeFiles/cmTC_540ad.dir/CheckFunctionExists.c.o -o cmTC_540ad 
+        gmake[1]: Leaving directory '/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-kk32rP'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CheckFunctionExists.cmake:86 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindX11.cmake:711 (check_function_exists)"
+      - "build/_deps/raylib-src/src/external/glfw/src/CMakeLists.txt:187 (find_package)"
+    checks:
+      - "Looking for connect"
+    directories:
+      source: "/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-weaBdT"
+      binary: "/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-weaBdT"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/orbit/fun/CoolProjects/PerlinNoise/build/_deps/raylib-src/cmake;/home/orbit/fun/CoolProjects/PerlinNoise/build/_deps/raylib-src/src/external/glfw/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_CONNECT"
+      cached: true
+      stdout: |
+        Change Dir: '/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-weaBdT'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_36a96/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_36a96.dir/build.make CMakeFiles/cmTC_36a96.dir/build
+        gmake[1]: Entering directory '/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-weaBdT'
+        Building C object CMakeFiles/cmTC_36a96.dir/CheckFunctionExists.c.o
+        /usr/bin/gcc   -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DCHECK_FUNCTION_EXISTS=connect -std=gnu99 -o CMakeFiles/cmTC_36a96.dir/CheckFunctionExists.c.o -c /home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-weaBdT/CheckFunctionExists.c
+        Linking C executable cmTC_36a96
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_36a96.dir/link.txt --verbose=1
+        /usr/bin/gcc -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DCHECK_FUNCTION_EXISTS=connect CMakeFiles/cmTC_36a96.dir/CheckFunctionExists.c.o -o cmTC_36a96 
+        gmake[1]: Leaving directory '/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-weaBdT'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CheckFunctionExists.cmake:86 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindX11.cmake:720 (check_function_exists)"
+      - "build/_deps/raylib-src/src/external/glfw/src/CMakeLists.txt:187 (find_package)"
+    checks:
+      - "Looking for remove"
+    directories:
+      source: "/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-Fivtmu"
+      binary: "/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-Fivtmu"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/orbit/fun/CoolProjects/PerlinNoise/build/_deps/raylib-src/cmake;/home/orbit/fun/CoolProjects/PerlinNoise/build/_deps/raylib-src/src/external/glfw/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_REMOVE"
+      cached: true
+      stdout: |
+        Change Dir: '/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-Fivtmu'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_080a0/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_080a0.dir/build.make CMakeFiles/cmTC_080a0.dir/build
+        gmake[1]: Entering directory '/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-Fivtmu'
+        Building C object CMakeFiles/cmTC_080a0.dir/CheckFunctionExists.c.o
+        /usr/bin/gcc   -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DCHECK_FUNCTION_EXISTS=remove -std=gnu99 -o CMakeFiles/cmTC_080a0.dir/CheckFunctionExists.c.o -c /home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-Fivtmu/CheckFunctionExists.c
+        Linking C executable cmTC_080a0
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_080a0.dir/link.txt --verbose=1
+        /usr/bin/gcc -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DCHECK_FUNCTION_EXISTS=remove CMakeFiles/cmTC_080a0.dir/CheckFunctionExists.c.o -o cmTC_080a0 
+        gmake[1]: Leaving directory '/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-Fivtmu'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CheckFunctionExists.cmake:86 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindX11.cmake:729 (check_function_exists)"
+      - "build/_deps/raylib-src/src/external/glfw/src/CMakeLists.txt:187 (find_package)"
+    checks:
+      - "Looking for shmat"
+    directories:
+      source: "/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-YSJr4u"
+      binary: "/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-YSJr4u"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/orbit/fun/CoolProjects/PerlinNoise/build/_deps/raylib-src/cmake;/home/orbit/fun/CoolProjects/PerlinNoise/build/_deps/raylib-src/src/external/glfw/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_SHMAT"
+      cached: true
+      stdout: |
+        Change Dir: '/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-YSJr4u'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_781a4/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_781a4.dir/build.make CMakeFiles/cmTC_781a4.dir/build
+        gmake[1]: Entering directory '/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-YSJr4u'
+        Building C object CMakeFiles/cmTC_781a4.dir/CheckFunctionExists.c.o
+        /usr/bin/gcc   -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DCHECK_FUNCTION_EXISTS=shmat -std=gnu99 -o CMakeFiles/cmTC_781a4.dir/CheckFunctionExists.c.o -c /home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-YSJr4u/CheckFunctionExists.c
+        Linking C executable cmTC_781a4
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_781a4.dir/link.txt --verbose=1
+        /usr/bin/gcc -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DCHECK_FUNCTION_EXISTS=shmat CMakeFiles/cmTC_781a4.dir/CheckFunctionExists.c.o -o cmTC_781a4 
+        gmake[1]: Leaving directory '/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/CMakeScratch/TryCompile-YSJr4u'
+        
+      exitCode: 0
+...

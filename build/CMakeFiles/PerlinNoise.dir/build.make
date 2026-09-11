@@ -92,6 +92,13 @@ PerlinNoise_EXTERNAL_OBJECTS =
 
 PerlinNoise: CMakeFiles/PerlinNoise.dir/src/main.cpp.o
 PerlinNoise: CMakeFiles/PerlinNoise.dir/build.make
+PerlinNoise: _deps/raylib-build/raylib/libraylib.a
+PerlinNoise: /usr/lib/x86_64-linux-gnu/libOpenGL.so
+PerlinNoise: /usr/lib/x86_64-linux-gnu/libGLX.so
+PerlinNoise: /usr/lib/x86_64-linux-gnu/libGLU.so
+PerlinNoise: _deps/raylib-build/raylib/external/glfw/src/libglfw3.a
+PerlinNoise: /usr/lib/x86_64-linux-gnu/librt.a
+PerlinNoise: /usr/lib/x86_64-linux-gnu/libm.so
 PerlinNoise: CMakeFiles/PerlinNoise.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable PerlinNoise"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PerlinNoise.dir/link.txt --verbose=$(VERBOSE)
