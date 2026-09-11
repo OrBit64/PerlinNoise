@@ -1,0 +1,3 @@
+/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/PerlinNoise.dir
+/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/edit_cache.dir
+/home/orbit/fun/CoolProjects/PerlinNoise/build/CMakeFiles/rebuild_cache.dir

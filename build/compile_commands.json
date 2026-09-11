@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/orbit/fun/CoolProjects/PerlinNoise/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/PerlinNoise.dir/src/main.cpp.o -c /home/orbit/fun/CoolProjects/PerlinNoise/src/main.cpp",
+  "file": "/home/orbit/fun/CoolProjects/PerlinNoise/src/main.cpp",
+  "output": "CMakeFiles/PerlinNoise.dir/src/main.cpp.o"
+}
+]
