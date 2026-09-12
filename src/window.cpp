@@ -15,8 +15,12 @@ namespace PerlinUI
         InitWindow(w_width, w_height, w_title);
         ClearWindowState(FLAG_FULLSCREEN_MODE);
         SetTargetFPS(targetFPS);
-        setGridScale(5);
-        setGridSize(10);
+        setGridSize(3);
+        setGridScale(3);
+
+        flag_show_grid = true;
+
+        rebuildGrid();
     }
 
     // Calculate Perlin noise every frame
@@ -35,7 +39,11 @@ namespace PerlinUI
 
             // TODO: Draw Perlin noise
             // Draw a grid with size = g_size, scale = g_scale. Now it's more for debugging.
-            drawGrid();
+            for (auto pixel_p = pixels.begin(); pixel_p != pixels.end(); pixel_p++)
+                DrawRectangle(pixel_p->x, pixel_p->y, pixel_p->size, pixel_p->size, pixel_p->c);
+            
+            if (flag_show_grid)
+                drawGrid();
 
         EndDrawing();
     }
@@ -45,15 +53,45 @@ namespace PerlinUI
     {
         while (!WindowShouldClose())
         {
-            if (IsWindowResized()) 
+            if (IsWindowResized())  // Make window unresizable (temporary)
             {
                 SetWindowSize(w_width, w_height);
                 // w_width = GetRenderWidth();
                 // w_height = GetRenderHeight();
             }
+            get_input();
             calculate();
             draw();
         }
+    }
+
+    // Getting input
+    void Window::get_input()
+    {
+        // Change grid's size
+        if (IsKeyPressed(KEY_UP))
+        {
+            setGridSize(g_size + 1);
+            rebuildGrid();
+        }
+        if (IsKeyPressed(KEY_DOWN))
+        {
+            setGridSize(g_size - 1);
+            rebuildGrid();
+        }
+        // Change grid's scale
+        if (IsKeyPressed(KEY_RIGHT))
+        {
+            setGridScale(g_scale + 1);
+            rebuildGrid();
+        }
+        if (IsKeyPressed(KEY_LEFT))
+        {
+            setGridScale(g_scale - 1);
+            rebuildGrid();
+        }
+        if (IsKeyPressed(KEY_G))        // Press G to show/hide grid
+            flag_show_grid = flag_show_grid ? false : true;
     }
 
     // Methods for grid
@@ -85,10 +123,33 @@ namespace PerlinUI
     {
         int cell_size = w_width / g_size;
         int pixel_size = cell_size / g_scale;
-        for (int x = 0; x < w_width; x += pixel_size * g_size)
+        for (int x = 0; x < w_width; x += pixel_size * g_scale)
             DrawLine(x, 0, x, w_height, BLACK);
-        for (int y = 0; y < w_height; y += pixel_size * g_size)
+        for (int y = 0; y < w_height; y += pixel_size * g_scale)
             DrawLine(0, y, w_width, y, BLACK);
+    }
+
+    // Rebuild grid with new size and scale
+    void Window::rebuildGrid()
+    {
+        pixels.clear();
+        int cell_size = w_width / g_size;
+        int pixel_size = cell_size / g_scale;
+        for (int x = 0; x <= w_width; x += pixel_size)
+        {
+            for (int y = 0; y <= w_height; y += pixel_size)
+            {
+                pixels.push_back({
+                    x, y, pixel_size,
+                    {
+                        (unsigned char) (float(x) / float(w_width) * 255.f),
+                        (unsigned char) (float(y) / float(w_width) * 255.f),
+                        (unsigned char) (float(x*y) / float(w_width*w_height) * 255.f),
+                        255
+                    }
+                });
+            }
+        }
     }
 
 }

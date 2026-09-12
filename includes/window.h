@@ -1,9 +1,18 @@
 #pragma once
 
 #include <raylib.h>
+#include <vector>
 
 namespace PerlinUI
 {
+
+    struct Pixel
+    {
+        int x;
+        int y;
+        int size;
+        Color c;
+    };
 
     class Window
     {
@@ -14,6 +23,7 @@ namespace PerlinUI
         int targetFPS;          // target FPS
         int g_scale;
         int g_size;
+        bool flag_show_grid;
     public:
         Window(int width, int height, const char* title, int target_fps = 60);
         ~Window() { CloseWindow(); }
@@ -23,9 +33,12 @@ namespace PerlinUI
     private:
         void draw();        // draw Perlin noise every frame
         void calculate();   // calculate Perlin noise every frame
+        void get_input();
 
         void drawGrid();    // Draws grid on the screen
+        void rebuildGrid();
         
+        std::vector<Pixel> pixels;
     };
 
 }
