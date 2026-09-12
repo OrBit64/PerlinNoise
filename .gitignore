@@ -1,0 +1,37 @@
+# Папка сборки CMake
+build/
+cmake-build-*/
+out/
+
+# Скомпилированные файлы
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+
+# Файлы, генерируемые CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+CTestTestfile.cmake
+cmake_install.cmake
+Makefile
+
+# Файлы IDE (часто создаются рядом)
+.vscode/
+.idea/
+*.user
+*.suo
+*.ncb
+*.sdf
+*.opensdf
+*.vcxproj.filters
+*.vcxproj.user
+
+# OS-файлы
+.DS_Store
+Thumbs.db
