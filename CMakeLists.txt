@@ -3,27 +3,58 @@ project(PerlinNoise)
 
 set(CMAKE_CXX_STANDARD 11)
 
-# Raylib
+
+# External libraries ----------------------------------------------------------
 include(FetchContent)
 
-set(RAYLIB_VERSION 4.5.0)
+# Raylib
+# 4.5.0 - last version
+set(RAYLIB_VERSION 5.0)
 FetchContent_Declare(
     raylib
-    URL https://github.com/raysan5/raylib/archive/refs/tags/${RAYLIB_VERSION}.tar.gz
-    FIND_PACKAGE_ARGS ${RAYLIB_VERSION} EXACT
+    URL https://github.com/raysan5/raylib/archive/refs/tags/${RAYLIB_VERSION}.zip
 )
-set(BUILD_EXAMPLES OFF CACHE INTERNAL "")
 FetchContent_MakeAvailable(raylib)
 
-# Project
+# FetchContent_Declare(
+#     raylib
+#     URL https://github.com/raysan5/raylib/archive/refs/tags/${RAYLIB_VERSION}.tar.gz
+#     FIND_PACKAGE_ARGS ${RAYLIB_VERSION} EXACT
+# )
+# set(BUILD_EXAMPLES OFF CACHE INTERNAL "")
+
+
+# Our libs --------------------------------------------------------------------
+# Our math lib
+add_library(PerlinMath 
+    src/perlin_math.cpp
+    includes/perlin_math.h
+)
+target_include_directories(PerlinMath PUBLIC includes/)
+
+# UI lib
+add_library(PerlinUI
+    src/window.cpp
+    includes/window.h
+)
+target_include_directories(PerlinUI PUBLIC includes/)
+target_link_libraries(PerlinUI 
+    raylib
+    PerlinMath
+)
+
+
+# Project ---------------------------------------------------------------------
 add_executable(${PROJECT_NAME}
     src/main.cpp    
 )
 target_link_libraries(${PROJECT_NAME}
-    raylib
+    # PerlinMath
+    PerlinUI
 )
 
-# Some stuff for crossplatform
+
+# Some stuff for crossplatform ------------------------------------------------
 if (APPLE)
     target_link_libraries(${PROJECT_NAME} "-framework IOKit")
     target_link_libraries(${PROJECT_NAME} "-framework Cocoa")
