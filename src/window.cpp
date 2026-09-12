@@ -84,9 +84,10 @@ namespace PerlinUI
     void Window::drawGrid()
     {
         int cell_size = w_width / g_size;
-        for (int x = 0; x < w_width; x += cell_size)
+        int pixel_size = cell_size / g_scale;
+        for (int x = 0; x < w_width; x += pixel_size * g_size)
             DrawLine(x, 0, x, w_height, BLACK);
-        for (int y = 0; y < w_height; y += cell_size)
+        for (int y = 0; y < w_height; y += pixel_size * g_size)
             DrawLine(0, y, w_width, y, BLACK);
     }
 
