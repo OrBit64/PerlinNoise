@@ -127,27 +127,39 @@ namespace PerlinUI
             DrawLine(x, 0, x, w_height, BLACK);
         for (int y = 0; y < w_height; y += pixel_size * g_scale)
             DrawLine(0, y, w_width, y, BLACK);
+
+        for (auto node_p = nodes.begin(); node_p != nodes.end(); node_p++)
+            DrawCircle(node_p->x, node_p->y, 3.f, RED);
     }
 
     // Rebuild grid with new size and scale
     void Window::rebuildGrid()
     {
         pixels.clear();
+        nodes.clear();
+
         int cell_size = w_width / g_size;
         int pixel_size = cell_size / g_scale;
         for (int x = 0; x <= w_width; x += pixel_size)
         {
             for (int y = 0; y <= w_height; y += pixel_size)
             {
+                // Save every point and calculate it's gradient color;
                 pixels.push_back({
                     x, y, pixel_size,
                     {
                         (unsigned char) (float(x) / float(w_width) * 255.f),
-                        (unsigned char) (float(y) / float(w_width) * 255.f),
+                        (unsigned char) (float(y) / float(w_height) * 255.f),
                         (unsigned char) (float(x*y) / float(w_width*w_height) * 255.f),
                         255
                     }
                 });
+                // Save every node in vector<Node2> nodes and calculate it's gradient vector
+                if (x % (pixel_size * g_scale) == 0 && y % (pixel_size * g_scale) == 0)
+                {
+                    Node2 new_node = { x, y };
+                    nodes.push_back(new_node);
+                }
             }
         }
     }
