@@ -9,12 +9,15 @@ include(FetchContent)
 
 # Raylib
 # 4.5.0 - last version
-set(RAYLIB_VERSION 5.0)
+set(RAYLIB_VERSION 6.0)
+set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+set(BUILD_GAMES OFF CACHE BOOL "" FORCE)
 FetchContent_Declare(
     raylib
     URL https://github.com/raysan5/raylib/archive/refs/tags/${RAYLIB_VERSION}.zip
 )
-FetchContent_MakeAvailable(raylib)
+
+# target_include_directories(raylib PUBLIC ${raylib_SOURCE_DIR})
 
 # FetchContent_Declare(
 #     raylib
@@ -23,6 +26,34 @@ FetchContent_MakeAvailable(raylib)
 # )
 # set(BUILD_EXAMPLES OFF CACHE INTERNAL "")
 
+# ImGui 
+FetchContent_Declare(
+    imgui
+    URL https://github.com/ocornut/imgui/archive/refs/heads/master.zip
+)
+FetchContent_Declare(
+    rlimgui
+    GIT_REPOSITORY https://github.com/raylib-extras/rlImGui.git
+    GIT_TAG main
+    GIT_SHALLOW TRUE
+)
+FetchContent_MakeAvailable(raylib)
+FetchContent_MakeAvailable(imgui rlimgui)
+
+add_library(ImGui STATIC
+    ${imgui_SOURCE_DIR}/imgui.cpp
+    ${imgui_SOURCE_DIR}/imgui_draw.cpp
+    ${imgui_SOURCE_DIR}/imgui_tables.cpp
+    ${imgui_SOURCE_DIR}/imgui_widgets.cpp
+    ${imgui_SOURCE_DIR}/imgui_demo.cpp
+)
+target_include_directories(ImGui PUBLIC ${imgui_SOURCE_DIR})
+add_library(rlImGui STATIC
+    ${rlimgui_SOURCE_DIR}/rlImGui.cpp
+)
+target_include_directories(rlImGui PUBLIC ${rlimgui_SOURCE_DIR})
+target_link_libraries(rlImGui PUBLIC raylib ImGui)
+# target_link_directories(rlImGui PUBLIC raylib ImGui)
 
 # Our libs --------------------------------------------------------------------
 # Our math lib
@@ -40,6 +71,8 @@ add_library(PerlinUI
 target_include_directories(PerlinUI PUBLIC includes/)
 target_link_libraries(PerlinUI 
     raylib
+    ImGui
+    rlImGui
     PerlinMath
 )
 

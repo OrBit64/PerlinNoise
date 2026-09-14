@@ -1,7 +1,12 @@
 #include <iostream>
+#include <vector>
 
-#include <raylib.h>
-#include <window.h>
+// #include <raylib.h>
+#include "raylib.h"
+#include "imgui.h"
+#include "rlImGui.h"
+
+#include "window.h"
 
 namespace PerlinUI
 {
@@ -15,6 +20,9 @@ namespace PerlinUI
         InitWindow(w_width, w_height, w_title);
         ClearWindowState(FLAG_FULLSCREEN_MODE);
         SetTargetFPS(targetFPS);
+
+        rlImGuiSetup(true); // true -- dark theme
+
         setGridSize(3);
         setGridScale(3);
 
@@ -45,6 +53,13 @@ namespace PerlinUI
             if (flag_show_grid)
                 drawGrid();
 
+            // ImGui
+            rlImGuiBegin();
+
+            ImGui::ShowDemoWindow();
+
+            rlImGuiEnd();
+
         EndDrawing();
     }
 
@@ -55,9 +70,10 @@ namespace PerlinUI
         {
             if (IsWindowResized())  // Make window unresizable (temporary)
             {
-                SetWindowSize(w_width, w_height);
-                // w_width = GetRenderWidth();
-                // w_height = GetRenderHeight();
+                // SetWindowSize(w_width, w_height);
+                w_width = GetRenderWidth();
+                w_height = GetRenderHeight();
+                rebuildGrid();
             }
             get_input();
             calculate();

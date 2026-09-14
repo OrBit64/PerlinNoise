@@ -18,7 +18,7 @@
 #include <numeric>
 #include <random>
 #include <algorithm>
-#include <perlin_math.h>
+#include "perlin_math.h"
 
 /** Условные обозначения
  * size:        сколько квадратов с четырьмя случайными векторами

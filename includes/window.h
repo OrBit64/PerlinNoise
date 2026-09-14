@@ -1,6 +1,10 @@
 #pragma once
 
-#include <raylib.h>
+// #include <raylib.h>
+#include "raylib.h"
+#include "imgui.h"
+#include "rlImGui.h"
+
 #include <vector>
 
 namespace PerlinUI
@@ -37,7 +41,7 @@ namespace PerlinUI
 
     public:
         Window(int width, int height, const char* title, int target_fps = 60);
-        ~Window() { CloseWindow(); }
+        ~Window() { rlImGuiShutdown(); CloseWindow(); }
         void update();      // main cicle of the window. Running till window isn't close.
         bool setGridSize(int new_size);     // Set new size for grid
         bool setGridScale(int new_scale);   // Set new scale for grid

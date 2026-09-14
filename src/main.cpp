@@ -1,7 +1,8 @@
 #include <iostream>
 // #include <raylib.h>
 // #include <perlin_math.h>
-#include <window.h>
+
+#include "window.h"
 
 int main()
 {
