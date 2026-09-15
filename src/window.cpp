@@ -61,7 +61,7 @@ namespace PerlinUI
         {
             if (IsWindowResized())  // Make window unresizable (temporary)
             {
-                w_width = GetRenderWidth();
+                w_width  = GetRenderWidth();
                 w_height = GetRenderHeight();
                 dispatcher.rebuild();
             }
@@ -83,13 +83,9 @@ namespace PerlinUI
     void Window::drawGrid()
     {
         // TODO: Add members cell_size and pixel_size in Dispatcher?
-        int cell_size = w_width / dispatcher.getGSize();
-        int pixel_size = cell_size / dispatcher.getGScale();
-        cell_size = cell_size > 0 ? cell_size : 1;
-        pixel_size = pixel_size > 0 ? pixel_size : 1;
-        for (int x = 0; x < w_width; x += pixel_size * dispatcher.getGScale())
+        for (int x = 0; x < w_width; x += dispatcher.getPixelSize() * dispatcher.getGScale())
             DrawLine(x, 0, x, w_height, BLACK);
-        for (int y = 0; y < w_height; y += pixel_size * dispatcher.getGScale())
+        for (int y = 0; y < w_height; y += dispatcher.getPixelSize() * dispatcher.getGScale())
             DrawLine(0, y, w_width, y, BLACK);
 
         for (auto node_p = dispatcher.nodes.begin(); node_p != dispatcher.nodes.end(); node_p++)

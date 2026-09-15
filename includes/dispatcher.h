@@ -35,6 +35,7 @@ namespace PerlinUI
     private:
         int size; 
         int scale;
+
     public:
         int getSize()   { return size; }
         int* getSize_ptr()  { return &size; }
@@ -58,8 +59,12 @@ namespace PerlinUI
         Grid grid;
         int g_size;     // Using only for ImGui    
         int g_scale;    // Using only for ImGui
+        
         int w_width;
         int w_height;
+
+        int cell_size;
+        int pixel_size;
     public:
         Dispatcher(bool dark_theme = true);
         ~Dispatcher();
@@ -68,6 +73,9 @@ namespace PerlinUI
 
         int getGSize()  { return grid.getSize(); }
         int getGScale() { return grid.getScale(); }
+
+        int getCellSize()   { return cell_size; }
+        int getPixelSize()  { return pixel_size; }
 
         void draw();
 

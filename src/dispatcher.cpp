@@ -74,6 +74,7 @@ namespace PerlinUI
         grid.setScale(5);
         g_size = grid.getSize();
         g_scale = grid.getScale();
+
     }
     Dispatcher::~Dispatcher()
     {
@@ -85,20 +86,20 @@ namespace PerlinUI
         rlImGuiBegin();
 
         // Create a window called "My First Tool", with a menu bar.
-        ImGui::Begin("My First Tool", nullptr);
-            if (ImGui::BeginMenuBar())
-            {
-                if (ImGui::BeginMenu("File"))
-                {
-                    if (ImGui::MenuItem("Open..", "Ctrl+O")) { /* Do stuff */ }
-                    if (ImGui::MenuItem("Save", "Ctrl+S"))   { /* Do stuff */ }
-                    if (ImGui::MenuItem("Close", "Ctrl+W"))  {  }
-                    ImGui::EndMenu();
-                }
-                ImGui::EndMenuBar();
-            }
+        ImGui::Begin("My First Tool", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
+            // if (ImGui::BeginMenuBar())
+            // {
+            //     if (ImGui::BeginMenu("File"))
+            //     {
+            //         if (ImGui::MenuItem("Open..", "Ctrl+O")) { /* Do stuff */ }
+            //         if (ImGui::MenuItem("Save", "Ctrl+S"))   { /* Do stuff */ }
+            //         if (ImGui::MenuItem("Close", "Ctrl+W"))  {  }
+            //         ImGui::EndMenu();
+            //     }
+            //     ImGui::EndMenuBar();
+            // }
+            ImGui::SetWindowPos({0.f, 0.f});
 
-            // ImGui::Columns(1);
             if (ImGui::ArrowButton("Decrease size", ImGuiDir::ImGuiDir_Left))
             {
                 if (grid.setSize(grid.getSize() - 1))
@@ -107,6 +108,13 @@ namespace PerlinUI
                 }
                 rebuild();
             }
+            ImGui::SameLine();
+            if (ImGui::SliderInt("Size", &g_size, grid.MIN_SIZE, grid.MAX_SIZE))
+            {
+                grid.setSize(g_size);
+                rebuild();
+            }
+            ImGui::SameLine(290.f);
             if (ImGui::ArrowButton("Increase size", ImGuiDir::ImGuiDir_Right))
             {
                 if (grid.setSize(grid.getSize() + 1))
@@ -116,16 +124,23 @@ namespace PerlinUI
                 rebuild();
             }
 
-            if (ImGui::SliderInt("Size", &g_size, grid.MIN_SIZE, grid.MAX_SIZE))
+            if (ImGui::ArrowButton("Decrease scale", ImGuiDir_Left))
             {
-                grid.setSize(g_size);
+                if (grid.setScale(grid.getScale() - 1))
+                    g_scale = grid.getScale();
                 rebuild();
             }
-                
-            
+            ImGui::SameLine();
             if (ImGui::SliderInt("Scale", &g_scale, grid.MIN_SCALE, grid.MAX_SCALE))
             {
                 grid.setScale(g_scale);
+                rebuild();
+            }
+            ImGui::SameLine(290.f);
+            if (ImGui::ArrowButton("Increase scale", ImGuiDir_Right))
+            {
+                if (grid.setScale(grid.getScale() + 1))
+                    g_scale = grid.getScale();
                 rebuild();
             }
 
@@ -142,8 +157,8 @@ namespace PerlinUI
         pixels.clear();
         nodes.clear();
 
-        int cell_size = GetRenderWidth() / grid.getSize();
-        int pixel_size = cell_size / grid.getScale();
+        cell_size = GetRenderWidth() / grid.getSize();
+        pixel_size = cell_size / grid.getScale();
         cell_size = cell_size > 0 ? cell_size : 1;
         pixel_size = pixel_size > 0 ? pixel_size : 1;
         
