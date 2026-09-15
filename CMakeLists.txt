@@ -17,8 +17,6 @@ FetchContent_Declare(
     URL https://github.com/raysan5/raylib/archive/refs/tags/${RAYLIB_VERSION}.zip
 )
 
-# target_include_directories(raylib PUBLIC ${raylib_SOURCE_DIR})
-
 # FetchContent_Declare(
 #     raylib
 #     URL https://github.com/raysan5/raylib/archive/refs/tags/${RAYLIB_VERSION}.tar.gz
@@ -69,11 +67,23 @@ add_library(PerlinUI
     includes/window.h
 )
 target_include_directories(PerlinUI PUBLIC includes/)
+
+# Dispatcher lib (UI <-> Math) 
+add_library(Dispatcher 
+    src/dispatcher.cpp
+    includes/dispatcher.h
+)
+target_include_directories(Dispatcher PUBLIC includes/)
+
 target_link_libraries(PerlinUI 
     raylib
+    PerlinMath
+    Dispatcher
+)
+
+target_link_libraries(Dispatcher
     ImGui
     rlImGui
-    PerlinMath
 )
 
 
