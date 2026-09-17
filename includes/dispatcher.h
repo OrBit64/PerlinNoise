@@ -14,6 +14,13 @@
 
 namespace PerlinUI
 {
+
+    struct MyVector2
+    {
+        float x, y;
+        float angle;
+    };
+
     struct Pixel
     {
         int x;
@@ -65,6 +72,9 @@ namespace PerlinUI
 
         int cell_size;
         int pixel_size;
+        
+        bool flag_show_grid;
+        // bool flag_show_controls = false;
     public:
         Dispatcher(bool dark_theme = true);
         ~Dispatcher();
@@ -80,7 +90,12 @@ namespace PerlinUI
         void draw();
 
         void rebuild();
+        // void setup()    { rlImGuiSetup(true); }
         // void setWSize(int new_width, int new_height);
+
+        bool isShowGrid() { return flag_show_grid; }
+
+        ImGuiIO im_io;
     };
 
 }

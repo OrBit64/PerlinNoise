@@ -69,12 +69,14 @@ namespace PerlinUI
     Dispatcher::Dispatcher(bool dark_theme)
     {
         rlImGuiSetup(dark_theme);
+        im_io = ImGui::GetIO();
 
         grid.setSize(5);
         grid.setScale(5);
         g_size = grid.getSize();
         g_scale = grid.getScale();
 
+        flag_show_grid = true;
     }
     Dispatcher::~Dispatcher()
     {
@@ -84,9 +86,8 @@ namespace PerlinUI
     void Dispatcher::draw()
     {
         rlImGuiBegin();
-
         // Create a window called "My First Tool", with a menu bar.
-        ImGui::Begin("My First Tool", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
+        ImGui::Begin("Dispatcher", nullptr, ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_AlwaysAutoResize);
             // if (ImGui::BeginMenuBar())
             // {
             //     if (ImGui::BeginMenu("File"))
@@ -100,7 +101,7 @@ namespace PerlinUI
             // }
             ImGui::SetWindowPos({0.f, 0.f});
 
-            if (ImGui::ArrowButton("Decrease size", ImGuiDir::ImGuiDir_Left))
+            if (ImGui::ArrowButton("Decrease size", ImGuiDir::ImGuiDir_Left) || ImGui::IsKeyPressed(ImGuiKey_DownArrow))
             {
                 if (grid.setSize(grid.getSize() - 1))
                 {
@@ -115,7 +116,7 @@ namespace PerlinUI
                 rebuild();
             }
             ImGui::SameLine(290.f);
-            if (ImGui::ArrowButton("Increase size", ImGuiDir::ImGuiDir_Right))
+            if (ImGui::ArrowButton("Increase size", ImGuiDir::ImGuiDir_Right) || ImGui::IsKeyPressed(ImGuiKey_UpArrow))
             {
                 if (grid.setSize(grid.getSize() + 1))
                 {
@@ -124,7 +125,7 @@ namespace PerlinUI
                 rebuild();
             }
 
-            if (ImGui::ArrowButton("Decrease scale", ImGuiDir_Left))
+            if (ImGui::ArrowButton("Decrease scale", ImGuiDir_Left) || ImGui::IsKeyPressed(ImGuiKey_LeftArrow))
             {
                 if (grid.setScale(grid.getScale() - 1))
                     g_scale = grid.getScale();
@@ -137,18 +138,19 @@ namespace PerlinUI
                 rebuild();
             }
             ImGui::SameLine(290.f);
-            if (ImGui::ArrowButton("Increase scale", ImGuiDir_Right))
+            if (ImGui::ArrowButton("Increase scale", ImGuiDir_Right) || ImGui::IsKeyPressed(ImGuiKey_RightArrow))
             {
                 if (grid.setScale(grid.getScale() + 1))
                     g_scale = grid.getScale();
                 rebuild();
             }
 
+            ImGui::Button("Rebuild");
 
+            if (ImGui::Button("Show/Hide grid") || ImGui::IsKeyPressed(ImGuiKey_G))
+                flag_show_grid = flag_show_grid ? false : true;
         ImGui::End();
-
         // ImGui::ShowDemoWindow();
-
         rlImGuiEnd();
     }
 
@@ -172,7 +174,7 @@ namespace PerlinUI
                     {
                         (unsigned char) (float(x) / float(GetRenderWidth()) * 255.f),
                         (unsigned char) (float(y) / float(GetRenderHeight()) * 255.f),
-                        (unsigned char) (float(x*y) / float(GetRenderWidth()*GetRenderHeight()) * 255.f),
+                        (unsigned char) (float(x) / float(GetRenderWidth()*GetRenderHeight()) * 255.f),
                         255
                     }
                     // {

@@ -22,7 +22,7 @@ namespace PerlinUI
         int targetFPS;          // target FPS
         // int g_scale;    // -> dispatcher.getGScale()
         // int g_size;     // -> dispatcher.getGSize()
-        bool flag_show_grid;
+        // bool flag_show_grid;
 
         Dispatcher dispatcher;
 
@@ -37,7 +37,7 @@ namespace PerlinUI
     private:
         void draw();        // draw Perlin noise every frame
         void calculate();   // calculate Perlin noise every frame
-        void get_input();
+        // void get_input();
 
         void drawGrid();    // Draws grid on the screen
         // void rebuildGrid(); // -> dispatcher.rebuild();

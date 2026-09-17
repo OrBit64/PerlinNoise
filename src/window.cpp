@@ -20,8 +20,6 @@ namespace PerlinUI
         InitWindow(w_width, w_height, w_title);
         SetTargetFPS(targetFPS);
 
-        flag_show_grid = true;
-
         dispatcher.rebuild();
     }
 
@@ -42,11 +40,13 @@ namespace PerlinUI
             // TODO: Draw Perlin noise
             // Draw every pixel (Rectangle).
             for (auto pixel_p = dispatcher.pixels.begin(); pixel_p != dispatcher.pixels.end(); pixel_p++)
+            {
                 DrawRectangle(pixel_p->x, pixel_p->y, pixel_p->size, pixel_p->size, pixel_p->c);
+                // DrawPixel(pixel_p->x, pixel_p->y, RED);
+            }
             
             // Draw a grid with size = g_size, scale = g_scale.
-            if (flag_show_grid)
-                drawGrid();
+            if (dispatcher.isShowGrid()) drawGrid();
 
             // ImGui
             dispatcher.draw();
@@ -65,18 +65,18 @@ namespace PerlinUI
                 w_height = GetRenderHeight();
                 dispatcher.rebuild();
             }
-            get_input();
+            // get_input();
             calculate();
             draw();
         }
     }
 
     // Getting input
-    void Window::get_input()
-    {
-        if (IsKeyPressed(KEY_G))        // Press G to show/hide grid
-            flag_show_grid = flag_show_grid ? false : true;
-    }
+    // void Window::get_input()
+    // {
+    //     // if (IsKeyPressed(KEY_G))        // Press G to show/hide grid
+    //         // flag_show_grid = flag_show_grid ? false : true;
+    // }
 
     // Methods for grid
     // Drawing grid
