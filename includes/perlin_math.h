@@ -3,3 +3,10 @@
 #pragma once
 
 double dotXY(double X,double Y);//функция для обнаружения координат сетки
+class perlinNoize{
+    private:
+        std::vector<int>p;
+    public:
+        double dotXY(double X,double Y);
+        perlinNoize(unsigned int seed);
+};

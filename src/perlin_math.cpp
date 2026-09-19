@@ -26,15 +26,21 @@
  * pixel or p:  каждый отдельный пиксель, для которого расчитывается градиент
  */
 
-/*
-int main(){
-    vector<int>nums={1,2,3,4,5,6};
-    for(int i =0;i<6;i++){
-        cout<<nums[i]<<endl;
+perlinNoize::perlinNoize(unsigned int seed) {
+    p.resize(256);
+    for (int i = 0; i < 256; i++) {
+        p[i] = i;
     }
 
+    std::mt19937 generator(seed);
+
+    //  Перемешиваем элементы массива случайным образом
+    std::shuffle(p.begin(), p.end(), generator);
+    p.insert(p.end(), p.begin(), p.end());
 }
-*/
+
+
+
 
 //я не доделал эту функцию
 double dotXY(double X, double Y)
