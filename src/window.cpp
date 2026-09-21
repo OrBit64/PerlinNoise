@@ -41,6 +41,19 @@ namespace PerlinUI
             // Draw every pixel (Rectangle).
             for (auto pixel_p = dispatcher.pixels.begin(); pixel_p != dispatcher.pixels.end(); pixel_p++)
             {
+                if (dispatcher.isShowAnimation())
+                {
+                    int c = GetRandomValue(0, 3);
+                    if (c == 0)
+                        if (pixel_p->c.r < 255) pixel_p->c.r++;
+                        else pixel_p->c.r = 0;
+                    else if (c == 1)
+                        if (pixel_p->c.g < 255) pixel_p->c.g++;
+                        else pixel_p->c.g = 0;
+                    else if (c == 0)
+                        if (pixel_p->c.b < 255) pixel_p->c.b++;
+                        else pixel_p->c.b = 0;
+                }
                 DrawRectangle(pixel_p->x, pixel_p->y, pixel_p->size, pixel_p->size, pixel_p->c);
                 // DrawPixel(pixel_p->x, pixel_p->y, RED);
             }

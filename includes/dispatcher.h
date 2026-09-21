@@ -74,6 +74,7 @@ namespace PerlinUI
         int pixel_size;
         
         bool flag_show_grid;
+        bool flag_show_animation = false;
         // bool flag_show_controls = false;
     public:
         Dispatcher(bool dark_theme = true);
@@ -93,7 +94,8 @@ namespace PerlinUI
         // void setup()    { rlImGuiSetup(true); }
         // void setWSize(int new_width, int new_height);
 
-        bool isShowGrid() { return flag_show_grid; }
+        bool isShowGrid()       { return flag_show_grid; }
+        bool isShowAnimation()  { return flag_show_animation; }
 
         ImGuiIO im_io;
     };

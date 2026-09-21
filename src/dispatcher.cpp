@@ -101,19 +101,21 @@ namespace PerlinUI
             // }
             ImGui::SetWindowPos({0.f, 0.f});
 
+            ImGui::Text("FPS: %d", GetFPS());
+
             if (ImGui::ArrowButton("Decrease size", ImGuiDir::ImGuiDir_Left) || ImGui::IsKeyPressed(ImGuiKey_DownArrow))
             {
                 if (grid.setSize(grid.getSize() - 1))
                 {
                     g_size = grid.getSize();
+                    rebuild();
                 }
-                rebuild();
             }
             ImGui::SameLine();
             if (ImGui::SliderInt("Size", &g_size, grid.MIN_SIZE, grid.MAX_SIZE))
             {
-                grid.setSize(g_size);
-                rebuild();
+                if (grid.setSize(g_size))
+                    rebuild();
             }
             ImGui::SameLine(290.f);
             if (ImGui::ArrowButton("Increase size", ImGuiDir::ImGuiDir_Right) || ImGui::IsKeyPressed(ImGuiKey_UpArrow))
@@ -121,31 +123,37 @@ namespace PerlinUI
                 if (grid.setSize(grid.getSize() + 1))
                 {
                     g_size = grid.getSize();
+                    rebuild();
                 }
-                rebuild();
             }
 
             if (ImGui::ArrowButton("Decrease scale", ImGuiDir_Left) || ImGui::IsKeyPressed(ImGuiKey_LeftArrow))
             {
                 if (grid.setScale(grid.getScale() - 1))
+                {
                     g_scale = grid.getScale();
-                rebuild();
+                    rebuild();
+                }
             }
             ImGui::SameLine();
             if (ImGui::SliderInt("Scale", &g_scale, grid.MIN_SCALE, grid.MAX_SCALE))
             {
-                grid.setScale(g_scale);
-                rebuild();
+                if (grid.setScale(g_scale))
+                    rebuild();
             }
             ImGui::SameLine(290.f);
             if (ImGui::ArrowButton("Increase scale", ImGuiDir_Right) || ImGui::IsKeyPressed(ImGuiKey_RightArrow))
             {
                 if (grid.setScale(grid.getScale() + 1))
+                {
                     g_scale = grid.getScale();
-                rebuild();
+                    rebuild();
+                }
             }
 
             ImGui::Button("Rebuild");
+            if (ImGui::Button("Start/Stop animation (light warning)"))
+                flag_show_animation = flag_show_animation ? false : true;
 
             if (ImGui::Button("Show/Hide grid") || ImGui::IsKeyPressed(ImGuiKey_G))
                 flag_show_grid = flag_show_grid ? false : true;
