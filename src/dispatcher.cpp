@@ -151,10 +151,10 @@ namespace PerlinUI
                 }
             }
 
-            ImGui::Button("Rebuild");
+            if (ImGui::Button("Rebuild"))
+                rebuild();
             if (ImGui::Button("Start/Stop animation (light warning)"))
                 flag_show_animation = flag_show_animation ? false : true;
-
             if (ImGui::Button("Show/Hide grid") || ImGui::IsKeyPressed(ImGuiKey_G))
                 flag_show_grid = flag_show_grid ? false : true;
         ImGui::End();
@@ -177,12 +177,14 @@ namespace PerlinUI
             for (int y = 0; y <= GetRenderHeight(); y += pixel_size)
             {
                 // Save every point and calculate it's gradient color;
+                int w_width = GetRenderWidth();
+                int w_height = GetRenderHeight();
                 pixels.push_back({
                     x, y, pixel_size,
                     {
                         (unsigned char) (float(x) / float(GetRenderWidth()) * 255.f),
                         (unsigned char) (float(y) / float(GetRenderHeight()) * 255.f),
-                        (unsigned char) (float(x) / float(GetRenderWidth()*GetRenderHeight()) * 255.f),
+                        (unsigned char) (float(x*y) / float(GetRenderWidth()*GetRenderHeight()) * 255.f),
                         255
                     }
                     // {

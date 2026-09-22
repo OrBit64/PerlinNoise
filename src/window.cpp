@@ -1,3 +1,6 @@
+/**
+ * Класс для отображения визуальной составляющей. 
+ */
 #include <iostream>
 #include <vector>
 
@@ -50,7 +53,7 @@ namespace PerlinUI
                     else if (c == 1)
                         if (pixel_p->c.g < 255) pixel_p->c.g++;
                         else pixel_p->c.g = 0;
-                    else if (c == 0)
+                    else if (c == 2)
                         if (pixel_p->c.b < 255) pixel_p->c.b++;
                         else pixel_p->c.b = 0;
                 }
@@ -61,7 +64,7 @@ namespace PerlinUI
             // Draw a grid with size = g_size, scale = g_scale.
             if (dispatcher.isShowGrid()) drawGrid();
 
-            // ImGui
+            // ImGui - show control window and get input            
             dispatcher.draw();
 
         EndDrawing();
@@ -95,7 +98,6 @@ namespace PerlinUI
     // Drawing grid
     void Window::drawGrid()
     {
-        // TODO: Add members cell_size and pixel_size in Dispatcher?
         for (int x = 0; x < w_width; x += dispatcher.getPixelSize() * dispatcher.getGScale())
             DrawLine(x, 0, x, w_height, BLACK);
         for (int y = 0; y < w_height; y += dispatcher.getPixelSize() * dispatcher.getGScale())
