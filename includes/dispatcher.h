@@ -9,6 +9,7 @@
 // #include "raylib.h"
 #include "imgui.h"
 #include "rlImGui.h"
+#include "perlin_math.h"
 
 // #include "window.h"
 
@@ -76,6 +77,8 @@ namespace PerlinUI
         bool flag_show_grid;
         bool flag_show_animation = false;
         // bool flag_show_controls = false;
+
+        perlinNoize perlin_math {1};
     public:
         Dispatcher(bool dark_theme = true);
         ~Dispatcher();

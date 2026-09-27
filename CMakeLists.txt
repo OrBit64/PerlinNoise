@@ -84,6 +84,7 @@ target_link_libraries(PerlinUI
 target_link_libraries(Dispatcher
     ImGui
     rlImGui
+    PerlinMath
 )
 
 

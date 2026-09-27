@@ -166,33 +166,39 @@ namespace PerlinUI
     {
         pixels.clear();
         nodes.clear();
-
+        
         cell_size = GetRenderWidth() / grid.getSize();
         pixel_size = cell_size / grid.getScale();
         cell_size = cell_size > 0 ? cell_size : 1;
         pixel_size = pixel_size > 0 ? pixel_size : 1;
-        
+
+        // perlinNoize new_perlin_math(GetRandomValue(0, 1000000));
+        auto noise_map = 
+            perlin_math.generateNoiseMap(
+                GetRenderWidth() / pixel_size + 1, 
+                GetRenderHeight() / pixel_size + 1,
+                grid.getScale()
+            );
+        // std::cout << "pixel size: " << pixel_size << ", w_size: " << GetRenderWidth() << "x" << GetRenderHeight() << '\n';
+        // std::cout << "pxls whole size: " << noise_map.size() * noise_map[0].size() << std::endl;
+
         for (int x = 0; x <= GetRenderWidth(); x += pixel_size)
         {
             for (int y = 0; y <= GetRenderHeight(); y += pixel_size)
             {
                 // Save every point and calculate it's gradient color;
+                int p_color = noise_map[y / pixel_size][x / pixel_size] * 255.f;
+                // std::cout << "x: " << x << ", y: " << y << ", map: " << noise_map[y / pixel_size][x / pixel_size] << std::endl;
                 int w_width = GetRenderWidth();
                 int w_height = GetRenderHeight();
                 pixels.push_back({
                     x, y, pixel_size,
                     {
-                        (unsigned char) (float(x) / float(GetRenderWidth()) * 255.f),
-                        (unsigned char) (float(y) / float(GetRenderHeight()) * 255.f),
-                        (unsigned char) (float(x*y) / float(GetRenderWidth()*GetRenderHeight()) * 255.f),
+                        (unsigned char) (p_color),
+                        (unsigned char) (p_color),
+                        (unsigned char) (p_color),
                         255
                     }
-                    // {
-                    //     (unsigned char) GetRandomValue(0, 255), 
-                    //     (unsigned char) GetRandomValue(0, 255),
-                    //     (unsigned char) GetRandomValue(0, 255),
-                    //      255
-                    // }
                 });
                 // // Save every node in vector<Node2> dispatcher.nodes and calculate it's gradient vector
                 if (x % (pixel_size * grid.getScale()) == 0 && y % (pixel_size * grid.getScale()) == 0)
@@ -202,6 +208,8 @@ namespace PerlinUI
                 }
             }
         }
+
+        // std::cout << "pixels size: " << pixels.size() << std::endl;
     }
 
 }
